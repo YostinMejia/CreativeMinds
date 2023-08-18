@@ -1,36 +1,36 @@
 # función n impar
-def print_diagonal_zigzag_IMP(matrix):    # O(n)
+def print_diagonal_zigzag_IMP(matrix):    # O(n^2)
     n = len(matrix)    # O(1)
     result = []        # O(1)
 
-    for i in range(n):    # O(n)
-        indexes = range(i, -1, -1) if i % 2 == 0 else range(0, i + 1)    # O(n)
+    for i in range(n):    # O(n^2)
+        indexes = range(i, -1, -1) if i % 2 == 0 else range(0, i + 1)    # O(n^2)
         result.extend(matrix[j][i - j] for j in indexes)    # O(n^2)
-    for i in range(1, n):    # O(n)
-        indexes = range(n - 1, i - 1, -1) if i % 2 == 0 else range(i, n)    # O(n)
+    for i in range(1, n):    # O(n^2)
+        indexes = range(n - 1, i - 1, -1) if i % 2 == 0 else range(i, n)    # O(n^2)
         result.extend(matrix[j][i + n - j - 1] for j in indexes)    # O(n^2)
 
     print(", ".join(map(str, result)))    # O(1)
 
 # función n par
-def print_diagonal_zigzag(matrix):    # O(n)
+def print_diagonal_zigzag(matrix):    # O(n^2)
     n = len(matrix)    # O(1)
     result = []    # O(1)
 
-    for i in range(n):    # O(n)
-        indexes = range(i, -1, -1) if i % 2 == 0 else range(0, i + 1)    # O(n)
+    for i in range(n):    # O(n^2)
+        indexes = range(i, -1, -1) if i % 2 == 0 else range(0, i + 1)    # O(n^2)
         result.extend(matrix[j][i - j] for j in indexes)    # O(n^2)
 
-    for i in range(1, n):    # O(n)
-        indexes = range(i, n) if i % 2 == 0 else range(n - 1, i - 1, -1)    # O(n)
+    for i in range(1, n):    # O(n^2)
+        indexes = range(i, n) if i % 2 == 0 else range(n - 1, i - 1, -1)    # O(n^2)
         result.extend(matrix[j][i + n - j - 1] for j in indexes)    # O(n^2)
 
     print(", ".join(map(str, result)))    # O(1)
 
 
-def main():    # O(n)
+def main():    # O(n^2)
     n = int(input("Ingrese el valor de n para la matriz nxn: "))    # O(1)
-    matrix = [[i * n + j + 1 for j in range(n)] for i in range(n)]        # O(n)
+    matrix = [[i * n + j + 1 for j in range(n)] for i in range(n)]        # O(n^2)
     print("Matriz generada:")        # O(1)
     for row in matrix:    # O(n)
         print(row)    # O(n)
