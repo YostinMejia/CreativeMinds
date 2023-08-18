@@ -1,0 +1,25 @@
+Punto 1: • Dado dos enteros que indican la hora y los minutos muestre el ángulo
+menor entre las dos manecillas de un reloj análogo 
+(código hecho por Laura López y Paulina Cano)
+
+def CalculoAnguloReloj(hrs, min):
+    if hrs == 12:
+        hrs = 0
+    if min == 60:
+        min = 0
+
+    if hrs == 0 and min == 0:
+        return 0
+    
+    angulo = abs((30*hrs - (11 / 2) * min) % 360)
+    
+    anguloAlReves = 360 - angulo
+    
+    return min(angulo, anguloAlReves)
+
+# Ej
+hrs = int(input("Escriba la hora: "))
+min = int(input("Escriba los minutos: "))
+
+angulo = CalculoAnguloReloj(hrs, min)
+print(f"El ángulo menor que va a estar entre las manecillas es de: {angulo} grados")
