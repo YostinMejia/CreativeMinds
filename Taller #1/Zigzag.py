@@ -5,10 +5,10 @@ def print_diagonal_zigzag_IMP(matrix):    # O(n)
 
     for i in range(n):    # O(n)
         indexes = range(i, -1, -1) if i % 2 == 0 else range(0, i + 1)    # O(n)
-        result.extend(matrix[j][i - j] for j in indexes)    # O(n)
+        result.extend(matrix[j][i - j] for j in indexes)    # O(n^2)
     for i in range(1, n):    # O(n)
         indexes = range(n - 1, i - 1, -1) if i % 2 == 0 else range(i, n)    # O(n)
-        result.extend(matrix[j][i + n - j - 1] for j in indexes)    # O(n)
+        result.extend(matrix[j][i + n - j - 1] for j in indexes)    # O(n^2)
 
     print(", ".join(map(str, result)))    # O(1)
 
@@ -19,11 +19,11 @@ def print_diagonal_zigzag(matrix):    # O(n)
 
     for i in range(n):    # O(n)
         indexes = range(i, -1, -1) if i % 2 == 0 else range(0, i + 1)    # O(n)
-        result.extend(matrix[j][i - j] for j in indexes)    # O(n)
+        result.extend(matrix[j][i - j] for j in indexes)    # O(n^2)
 
     for i in range(1, n):    # O(n)
         indexes = range(i, n) if i % 2 == 0 else range(n - 1, i - 1, -1)    # O(n)
-        result.extend(matrix[j][i + n - j - 1] for j in indexes)    # O(n)
+        result.extend(matrix[j][i + n - j - 1] for j in indexes)    # O(n^2)
 
     print(", ".join(map(str, result)))    # O(1)
 
