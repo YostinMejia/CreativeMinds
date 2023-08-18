@@ -1,3 +1,4 @@
+# función n impar
 def print_diagonal_zigzag_IMP(matrix):
     n = len(matrix)
     result = []
@@ -11,6 +12,7 @@ def print_diagonal_zigzag_IMP(matrix):
 
     print(", ".join(map(str, result)))
 
+# función n par
 def print_diagonal_zigzag(matrix):
     n = len(matrix)
     result = []
