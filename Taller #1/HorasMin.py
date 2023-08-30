@@ -22,6 +22,7 @@ hrs = int(input("Escriba la hora: "))
 minutes = int(input("Escriba los minutos: "))
 
 angulo = CalculoAnguloReloj(hrs, minutes) # O(1)
+angulote = 360 - angulo
 print(f"El ángulo menor que va a estar entre las manecillas es de: {angulo} grados")
 
 # la ecuación asintótica es: T(hrs, minutes) = C, donde T es el tiempo que tarda la funcion en ejecutarse y c la constante, 
