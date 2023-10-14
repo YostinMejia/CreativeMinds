@@ -240,7 +240,7 @@ boton_ordenar = tk.Button(ventana, text="Ordenar", command=ordenar)
 boton_ordenar.pack()
 
 # Resultado
-resultado = tk.Text(ventana, height=10, width=40)
+resultado = tk.Text(ventana, height=40, width=150)
 resultado.pack()
 
 ventana.mainloop()
