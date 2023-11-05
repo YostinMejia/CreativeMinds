@@ -1,0 +1,157 @@
+#programacion dinamica 
+
+def minDifference(arr, N):
+    total_sum = sum(arr)
+    
+    dp = [False] * (total_sum // 2 + 1)
+    
+    dp[0] = True
+    
+    for num in arr:
+        for j in range(total_sum // 2, num - 1, -1):
+            dp[j] = dp[j] or dp[j - num]
+
+    j = total_sum // 2
+    while not dp[j]:
+        j -= 1
+    
+    return total_sum - 2 * j
+
+arr = [1, 6, 11, 5]
+N = 4
+result = minDifference(arr, N)
+print(result)  # Output: 1
+
+arr = [3, 1, 4, 2, 2, 1]
+N = 6
+result = minDifference(arr, N)
+print(result)  # Output: 0
+
+arr = [1, 4]
+N = 2
+result = minDifference(arr, N)
+print(result)  # Output: 3
+
+arr = [1, 2, 3]
+N = 3
+result = minDifference(arr, N)
+print(result)  # Output: 0
+
+#2
+yo hice el de factorial 
+
+def factorial(numero,memoizacion=[]):
+    memoizacion=[-1]*(numero+1)
+    memoizacion[0]=1
+
+    for i in range(1,numero+1):
+        memoizacion[i] = i*memoizacion[i-1]
+    return memoizacion[numero]
+
+print(factorial(6))
+
+#3
+def minimum_subset_sum_difference(arr):
+    n = len(arr)
+    total_sum = sum(arr)
+    target_sum = total_sum // 2
+
+    dp = [[False for _ in range(target_sum + 1)] for _ in range(n + 1)]
+
+    for i in range(n + 1):
+        dp[i][0] = True
+
+    for i in range(1, n + 1):
+        for j in range(1, target_sum + 1):
+            if arr[i - 1] <= j:
+                dp[i][j] = dp[i - 1][j] or dp[i - 1][j - arr[i - 1]]
+            else:
+                dp[i][j] = dp[i - 1][j]
+
+    for j in range(target_sum, -1, -1):
+        if dp[n][j]:
+            subset_sum1 = j
+            subset_sum2 = total_sum - j
+            return total_sum - 2 * subset_sum1
+
+
+arr = [1, 6, 11, 5]
+resultado = minimum_subset_sum_difference(arr)
+print(f"La diferencia mínima es: {resultado}")
+
+
+#4 backtracking
+def imprimir_sudoku(sudoku):
+    for fila in sudoku:
+        print(fila)
+
+def es_valido(sudoku, fila, columna, numero):
+
+    for i in range(3):
+        if sudoku[fila][i] == numero or sudoku[i][columna] == numero:
+            return False
+    return True
+    
+#backtracking
+def resolver_sudoku(sudoku):
+    for fila in range(3):
+        for columna in range(3):
+            if sudoku[fila][columna] == 0:
+                for numero in range(1, 10):
+                    if es_valido(sudoku, fila, columna, numero):
+                        sudoku[fila][columna] = numero
+                        if resolver_sudoku(sudoku):
+                            return True
+                        sudoku[fila][columna] = 0
+                return False
+    return True
+
+def sudoku_sumas():
+    sudoku = [
+        [2, 0, 5],
+        [11, 0, 1],
+        [0, 5, 8]
+    ]
+    
+    if resolver_sudoku(sudoku):
+        imprimir_sudoku(sudoku)
+    else:
+        print("No se encontró solución.")
+
+sudoku_sumas()
+
+
+#5
+def generate_strings_with_spaces(s):
+    def backtrack(current, index):
+        if index == len(s):
+            result.append(''.join(current))
+            return
+
+        current.append(s[index])
+        backtrack(current, index + 1)
+        current.pop()
+
+        if index < len(s) - 1:
+            current.append(' ')
+            current.append(s[index])
+            backtrack(current, index + 1)
+            current.pop()
+            current.pop()
+
+    result = []
+    backtrack([], 0)
+    return result
+
+# Example usage:
+input_string = "abc"
+result = generate_strings_with_spaces(input_string)
+for s in result:
+    print(s)
+
+
+
+
+
+
+
