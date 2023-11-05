@@ -1,0 +1,18 @@
+def minDifference(arr, N):
+    total_sum = sum(arr)
+    
+    dp = [False] * (total_sum // 2 + 1)
+    
+    dp[0] = True
+    
+    for num in arr:
+        for j in range(total_sum // 2, num - 1, -1):
+            dp[j] = dp[j] or dp[j - num]
+
+    j = total_sum // 2
+    while not dp[j]:
+        j -= 1
+    
+    return total_sum - 2 * j
+
+arr = [1, 6, 11, 5]
